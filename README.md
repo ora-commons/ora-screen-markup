@@ -12,6 +12,13 @@ https://ora-ai.app. The other products' pages: Ora Agent Bridge
 (https://github.com/ora-commons/ora-adversarial-review), and Ora Vibe Coder
 (https://github.com/ora-commons/ora-vibe-coder).
 
+To report a problem, open the
+[Issues page](https://github.com/ora-commons/ora-screen-markup/issues).
+Reports are read and handled as capacity allows; no support is promised.
+
+License: [CC0 1.0 Universal](LICENSE) for first-party material; see
+[NOTICE.md](NOTICE.md) for third-party licences.
+
 ## Start here
 
 This release is for a Mac with Apple Silicon running macOS 14 or later.

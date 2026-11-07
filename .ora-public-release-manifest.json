@@ -7,13 +7,23 @@
     },
     {
       "executable": false,
+      "path": "LICENSE",
+      "sha256": "d08917ad4cf19dc0f4d6cffa9ffd792835a1748070539d7e783abc236cfa2c3c"
+    },
+    {
+      "executable": false,
+      "path": "NOTICE.md",
+      "sha256": "15ca353118e1da8e543404fee37f30f601ea0510a9dc89e1bfaa254502c1fb25"
+    },
+    {
+      "executable": false,
       "path": "Package.swift",
       "sha256": "4a6a455e8614161f3179f011d7e5dab4588ee9f857f75aa273dca83c9349a432"
     },
     {
       "executable": false,
       "path": "README.md",
-      "sha256": "570699cc4a71d9cd4838bf0ce77e1ddf3fc6e512cb12ba12a0ee61479fe40788"
+      "sha256": "4d052a342f7c29af32f813204d14027f76647e03196679de9043ff58c68bdbd1"
     },
     {
       "executable": false,
@@ -73,7 +83,7 @@
     {
       "executable": false,
       "path": "reviews/2026-11-07-public-release.md",
-      "sha256": "b36131f7c6aec3a193d616d0968172195e5bd62426b7bd5ca79557cf2c44652a"
+      "sha256": "9181d78f08349740dde8db1ebb0818c7f4baaf5558d982163d1de54bb3902719"
     },
     {
       "executable": true,
