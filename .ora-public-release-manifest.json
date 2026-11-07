@@ -1,0 +1,150 @@
+{
+  "files": [
+    {
+      "executable": false,
+      "path": ".gitignore",
+      "sha256": "abe004965eddf517eb8cd47d21e7c8cde7263d668ba85ff7bd752ad7b0e9a24a"
+    },
+    {
+      "executable": false,
+      "path": "Package.swift",
+      "sha256": "4a6a455e8614161f3179f011d7e5dab4588ee9f857f75aa273dca83c9349a432"
+    },
+    {
+      "executable": false,
+      "path": "README.md",
+      "sha256": "570699cc4a71d9cd4838bf0ce77e1ddf3fc6e512cb12ba12a0ee61479fe40788"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/AppDelegate.swift",
+      "sha256": "8cde936543e99bc89d149bf2099a3e045ad426b1df4554465ff454409b48ad1e"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/Capture.swift",
+      "sha256": "ce3f833d1ec1e00e6e91b9314893d9f6c32f28928a64623cc3112a88d45f2c71"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/Clipboard.swift",
+      "sha256": "e7fb49dc660f51cf8b19e451183e34389115e16e8faeea553366454338081184"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/HotKeys.swift",
+      "sha256": "edb071d8d4f92720f13dfffa55403bc9216ae10dc1bd50a4d9a92370fab911bc"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/PDFExport.swift",
+      "sha256": "97eb829521d957297448c64e30937e6d699d9214ad7e650432275b80db35ea19"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/RegionOverlay.swift",
+      "sha256": "02bcd8514b65e24f2eecb21b798158b2cc62fed3a876fda4d1d3c8f216ca234c"
+    },
+    {
+      "executable": false,
+      "path": "Sources/OraScreenMarkup/main.swift",
+      "sha256": "1721590712a15d66b94b61b69bb5fb3ffaee4f395460825d95aa80ad74b366f7"
+    },
+    {
+      "executable": false,
+      "path": "resources/OraScreenMarkup.icns",
+      "sha256": "33424145de1e5fdec9baac32aa40cae964db27b35855d2d47d758d8470f88950"
+    },
+    {
+      "executable": false,
+      "path": "reviews/2026-11-06-canvas-navigation.md",
+      "sha256": "5fcac37d5459943e69614a6797808eb452f3e36fc610e02359942e4ccd5f8a03"
+    },
+    {
+      "executable": false,
+      "path": "reviews/2026-11-06-capture-and-editable-files.md",
+      "sha256": "ff089e864228f56968a431daf92fb38e66407821fa4edd941cddcc11092f8793"
+    },
+    {
+      "executable": false,
+      "path": "reviews/2026-11-06-transparent-revision-cloud.md",
+      "sha256": "7f06a4bdbe33b21f4b5bb1efcd68e5be46c81dea9f628e671a473205bc40e82b"
+    },
+    {
+      "executable": false,
+      "path": "reviews/2026-11-07-public-release.md",
+      "sha256": "b36131f7c6aec3a193d616d0968172195e5bd62426b7bd5ca79557cf2c44652a"
+    },
+    {
+      "executable": true,
+      "path": "scripts/build-app.sh",
+      "sha256": "7687e6e731f47676f49e0222fc38a18815be433a2aa3b6329ac9fd7d796df3c8"
+    },
+    {
+      "executable": false,
+      "path": "web/build.mjs",
+      "sha256": "b41429160090c4465e5cd91bec3a9e3425c425f3c0023c2fd9053b31e09858b9"
+    },
+    {
+      "executable": false,
+      "path": "web/licenses/EXCALIDRAW-LICENSE.txt",
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be"
+    },
+    {
+      "executable": false,
+      "path": "web/licenses/FONT-LICENSES.txt",
+      "sha256": "f99e88e24e25c021519d3c73ad3209765b79cd6cff7f758660e42355aae9f402"
+    },
+    {
+      "executable": false,
+      "path": "web/package-lock.json",
+      "sha256": "54440dca0345972ec09f160cd49f0af2d3acd135576f6bfdd6172f4af98839fa"
+    },
+    {
+      "executable": false,
+      "path": "web/package.json",
+      "sha256": "5ca3385e72c1f065010e040d669585f6a2329f18ea4af1d4b3eb7547dcbb8bad"
+    },
+    {
+      "executable": false,
+      "path": "web/src/RockSalt-Regular.ttf",
+      "sha256": "c5421d1ced1949488f29d11b75b7ef967abe2d870f816246bf18fdc0f3e29c96"
+    },
+    {
+      "executable": false,
+      "path": "web/src/RockSalt.LICENSE.txt",
+      "sha256": "513ba3cc9e9f3ef5793f908f10f5e0e9db44503bb4febe6748f26bc722ca8ed6"
+    },
+    {
+      "executable": false,
+      "path": "web/src/app.css",
+      "sha256": "b2621794d4b6b075c2ea1221d8c2d5ac6bbb38daec0587a9c937279b19e4c56a"
+    },
+    {
+      "executable": false,
+      "path": "web/src/app.jsx",
+      "sha256": "a900e7bddc853c22d26d89a858ce919fcad9ba7d8b4f52b7d470dea959ce67c0"
+    },
+    {
+      "executable": false,
+      "path": "web/src/dark.css",
+      "sha256": "77ed5bf49e9f1d6d48bf5e6006f7cc15e443443015aef9541950c63e2eca1fef"
+    },
+    {
+      "executable": false,
+      "path": "web/src/index.html",
+      "sha256": "a574834476b54d7177d0a9a8789b36285b553df299e55dff92e449043190f3fa"
+    },
+    {
+      "executable": false,
+      "path": "web/src/marks.js",
+      "sha256": "eca44ef82e514e0064638076361e67b469670cc6b573946fe7031f820b7f0b22"
+    },
+    {
+      "executable": false,
+      "path": "web/src/reconcile.js",
+      "sha256": "bedef6bbf77da5a1f50c218c4313ba62cbe2c0bb8b2dbec60defb19c5fa99bfd"
+    }
+  ],
+  "version": 1
+}

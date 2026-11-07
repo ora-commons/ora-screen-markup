@@ -1,0 +1,364 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  color: var(--text-normal);
+  background: var(--background-primary);
+  overflow: hidden;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Rock Salt";
+  src: url("RockSalt-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.command-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  flex: none;
+}
+.step-number {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #A48055;
+  color: #15110A;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.step-label { font-size: 13px; margin-right: 5px; }
+.command-group { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.capture-setting { display: inline-flex; flex: none; align-items: center; gap: 6px; min-height: 32px; font-size: 12px; white-space: nowrap; cursor: pointer; }
+.capture-setting input { margin: 0; accent-color: #A48055; }
+.capture-setting.disabled { opacity: .5; cursor: default; }
+.open-existing { margin-left: 20px; }
+.history-group { padding-right: 10px; border-right: 1px solid var(--background-modifier-border); }
+.markup-row { align-items: center; gap: 7px 10px; }
+.markup-second-row { flex-basis: 100%; gap: 7px 10px; }
+.output-row { border-top: 1px solid var(--background-modifier-border); border-bottom: 0; }
+.glyph { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+.tool {
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 9px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background: var(--interactive-normal);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.tool:hover {
+  background: var(--interactive-hover);
+}
+
+.tool.armed {
+  background: #A48055;
+  border-color: #A48055;
+  color: #15110A;
+}
+
+.tool.primary { background: #A48055; border-color: #A48055; color: #15110A; font-weight: 600; }
+
+.tool.copy-action {
+  min-width: 118px;
+  background: var(--background-modifier-form-field);
+  border-color: var(--text-muted);
+  font-weight: 600;
+  box-shadow: 0 2px 0 #0007;
+}
+.tool.copy-action:hover { background: var(--background-modifier-border); border-color: var(--text-normal); }
+.tool.copy-action:active:not(:disabled) { transform: translateY(1px); box-shadow: none; }
+.tool.copy-action.copying { cursor: wait; opacity: .8; }
+.tool.copy-action.copied { background: var(--color-green); border-color: var(--color-green); color: var(--background-primary); }
+
+.tool:focus-visible,
+.note-number:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+
+#status {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 1 1 240px;
+  line-height: 1.4;
+}
+
+#body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+#canvas {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  background: var(--background-primary);
+}
+
+#notes {
+  box-sizing: border-box;
+  width: 290px;
+  flex: 0 0 290px;
+  background: var(--background-secondary);
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.spine {
+  flex: 0 0 58px;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 14px;
+  border-inline: 1px solid var(--background-modifier-border);
+  background: var(--background-modifier-form-field);
+  user-select: none;
+  overflow: hidden;
+  container-type: size;
+}
+.spine-mark { width: 50px; height: auto; display: block; flex: none; }
+.spine-mark .wm-stroke-base { stroke: var(--text-muted); fill: none; }
+.spine-mark .wm-stroke-bright { stroke: var(--text-normal); fill: none; }
+.spine-mark .wm-fill-base { fill: var(--text-muted); stroke: none; }
+.spine-name {
+  /* Leave room for the logo, word break and bottom space. The longer name
+     keeps the reference proportions where height permits. */
+  --letter-slot: clamp(22px, calc((100cqh - 164px) / 12), 38px);
+  margin-top: 14px;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 22px;
+  font-family: "Rock Salt", cursive;
+  font-weight: 400;
+  font-size: calc(var(--letter-slot) * .51);
+  font-synthesis: none;
+  line-height: var(--letter-slot);
+  color: var(--text-normal);
+}
+.spine-word { display: flex; flex-direction: column; }
+.spine-word > span { display: block; width: 44px; height: var(--letter-slot); text-align: center; }
+/* Markup and Library commands live in the numbered rows. Zoom, the menu and
+   Undo/Redo work from the Markup row; the editor's own copies are hidden. */
+.excalidraw .shapes-section,
+.excalidraw .App-toolbar--mobile,
+.excalidraw .default-sidebar-trigger,
+.excalidraw .main-menu-trigger,
+.excalidraw .zoom-button,
+.excalidraw [data-testid="button-undo"],
+.excalidraw [data-testid="button-redo"] { display: none !important; }
+/* The style panel folds behind the Markup row's button and starts folded;
+   nothing is remembered. One rule covers the wide layout's panel column and
+   the narrow layout's bottom-bar form. */
+#canvas.style-folded .excalidraw .selected-shape-actions,
+#canvas.style-folded .excalidraw .App-bottom-bar .panelColumn { display: none !important; }
+/* The canvas menu's dropdown opens beside the Markup row's Menu button, not
+   under the editor's own hidden left-edge trigger; toggleMenu sets its
+   fixed position from the button. */
+.excalidraw .dropdown-menu.ora-beside-menu-button { position: fixed; top: auto; margin-top: 0; }
+.decision-backdrop { position: fixed; inset: 0; z-index: 1000; background: #0009; display: grid; place-items: center; padding: 20px; }
+.decision { width: min(560px, 100%); max-height: 90vh; overflow: auto; padding: 22px; box-sizing: border-box; border: 1px solid #A48055; border-radius: 10px; background: var(--background-secondary); box-shadow: 0 12px 50px #0008; }
+.decision h2 { margin: 0 0 12px; font-size: 19px; }
+.decision p { font-size: 13px; line-height: 1.5; }
+.decision-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.final-actions { justify-content: flex-end; margin-top: 16px; }
+.dialog-status { color: var(--text-muted); }
+@media (max-width: 1100px) {
+  #notes { flex-basis: 160px; width: 160px; }
+}
+@media (max-width: 900px) {
+  .command-row { padding-inline: 8px; }
+  .tool { padding-inline: 7px; }
+}
+
+.notes-heading {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.notes-empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.note-row {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.note-number {
+  flex: 0 0 26px;
+  height: 26px;
+  border-radius: 13px;
+  border: 1px solid var(--color-green);
+  background: var(--color-green);
+  color: var(--background-primary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.note-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.note-kind {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.note-text {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 5px 6px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  resize: vertical;
+  background: var(--background-modifier-form-field);
+  color: var(--text-normal);
+}
+
+.note-text::placeholder {
+  color: var(--text-muted);
+}
+
+.note-text:focus {
+  outline: 2px solid var(--color-green);
+  outline-offset: -1px;
+}
+
+.welcome-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Keep the renderer in its original color space; the dark surface and ink
+   outlines are display styles and never change the captured image or export. */
+.theme-dark .excalidraw {
+  --color-primary: var(--color-purple);
+  --color-primary-darker: var(--color-pink);
+  --color-primary-darkest: var(--color-pink);
+  --color-primary-light: var(--background-modifier-form-field);
+  --color-primary-light-darker: var(--background-modifier-border);
+  --color-primary-hover: var(--color-pink);
+  --color-selection: var(--color-purple);
+  --color-brand-hover: var(--color-pink);
+  --color-brand-active: var(--color-green);
+  --color-on-primary-container: var(--text-normal);
+  --color-surface-primary-container: var(--color-purple);
+  --color-surface-lowest: var(--background-primary);
+  --color-surface-low: var(--background-secondary);
+  --color-surface-mid: var(--background-secondary);
+  --color-surface-high: var(--background-modifier-form-field);
+  --color-on-surface: var(--text-normal);
+  --color-border-outline: var(--text-muted);
+  --color-border-outline-variant: var(--background-modifier-border);
+  --default-bg-color: var(--background-primary);
+  --island-bg-color: var(--background-secondary);
+  --sidebar-bg-color: var(--background-secondary);
+  --sidebar-border-color: var(--background-modifier-border);
+  --dialog-border-color: var(--background-modifier-border);
+  --input-bg-color: var(--background-modifier-form-field);
+  --input-border-color: var(--background-modifier-border);
+  --input-hover-bg-color: var(--interactive-hover);
+  --input-label-color: var(--text-muted);
+  --icon-fill-color: var(--icon-color);
+  --keybinding-color: var(--text-muted);
+  --popup-secondary-bg-color: var(--background-modifier-form-field);
+  --popup-text-color: var(--text-normal);
+  --popup-text-inverted-color: var(--background-primary);
+  --focus-highlight-color: var(--color-green);
+  --select-highlight-color: var(--color-green);
+  --link-color: var(--h5-color);
+  --button-gray-1: var(--interactive-normal);
+  --button-gray-2: var(--interactive-hover);
+  --button-gray-3: var(--background-modifier-border);
+  --scrollbar-thumb: var(--background-modifier-border);
+  --scrollbar-thumb-hover: var(--text-muted);
+  --color-gray-10: var(--background-primary);
+  --color-gray-20: var(--background-modifier-border);
+  --color-gray-30: var(--background-modifier-border);
+  --color-gray-40: var(--text-muted);
+  --color-gray-50: var(--text-muted);
+  --color-gray-60: var(--text-muted);
+  --color-gray-70: var(--text-muted);
+  --color-gray-80: var(--icon-color);
+  --color-gray-85: var(--text-normal);
+  --color-gray-90: var(--text-normal);
+  --color-gray-100: var(--text-normal);
+}
+
+.theme-dark .excalidraw .App-menu__left,
+.theme-dark .excalidraw .App-mobile-menu {
+  --button-hover-bg: var(--interactive-hover);
+}
+
+/* Outline both completed marks and the separate canvas used while drawing.
+   Shadows sit behind opaque captured pixels, leaving their colors intact. */
+.theme-dark .excalidraw .excalidraw__canvas:not(.interactive) {
+  filter: drop-shadow(0 0 1px var(--text-normal))
+    drop-shadow(0 0 1px var(--text-normal));
+}
+
+.theme-dark .excalidraw textarea.excalidraw-wysiwyg {
+  text-shadow: 1px 0 var(--text-normal), -1px 0 var(--text-normal),
+    0 1px var(--text-normal), 0 -1px var(--text-normal);
+  caret-color: var(--text-normal);
+}
+
+/* These hints sit directly on the dark drawing surface. */
+.theme-dark .excalidraw .welcome-screen-decor,
+.theme-dark .excalidraw .welcome-title,
+.theme-dark .excalidraw .HintViewer {
+  color: var(--text-muted);
+}

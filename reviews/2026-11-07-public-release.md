@@ -1,0 +1,6 @@
+# Public release 0.1.0 (ORA-303)
+
+- Change: `CFBundleShortVersionString` 1.0 → 0.1.0 (the About window reads it), and the README restructured as the landing page and starting guide for the public download — download and unzip, move to Applications, the one-time Privacy & Security allowance (not Apple-notarized yet), Screen Recording, capturing and marking up, Export PDF, Save/Open Editable Drawing, finding the version, updating by replacing the app, removing via the Trash. The existing capture documentation and the build-and-install section stay below the guide.
+- Release archive: built ad hoc (`ORA_SCREEN_MARKUP_SIGN_IDENTITY=-`, no `--install`) in a detached worktree at `/private/tmp/ora-screen-markup-0.1.0`; zipped with `ditto -c -k --sequesterRsrc --keepParent`; 16,270,233 bytes, SHA-256 `a71fbe44e5eefd80d5c165c0164168399c96dd06fd733d0400ac6c751424c9b1`. The same bytes are bundled into Vibe Coder 0.5.0.
+- Exporter refusal check over the unpacked app's 246 files: zero findings (preview mode; output kept with the release build).
+- Independent review (Codex gpt-6.1-sol, effort xhigh, Agent Bridge, 7 November) of both ORA-303 candidates: no findings against this repository's diff. The removal-only pass that followed recommended nothing to remove from it.

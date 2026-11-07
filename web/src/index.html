@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ora Screen Markup</title>
+    <link rel="stylesheet" href="excalidraw.css" />
+    <link rel="stylesheet" href="dark.css" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body class="theme-dark">
+    <div id="root"></div>
+    <script>
+      // The editor loads its fonts from the copy inside the app bundle, so
+      // it never needs the internet.
+      window.EXCALIDRAW_ASSET_PATH = new URL(".", document.baseURI).href;
+    </script>
+    <script src="ora-markup.js"></script>
+  </body>
+</html>

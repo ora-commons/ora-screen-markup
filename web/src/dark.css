@@ -1,0 +1,74 @@
+/* ============================================================
+   Ora Dark Theme — color values for .theme-dark
+   Cream-paper palette inverted to dark paper. Six per-register
+   accents from the publisher's palette spec (~/Desktop/msi-palette-
+   swatches.html, 2026-05-06). The earlier neutral-grey + Dracula
+   accents were unauthorized and have been replaced 2026-05-22.
+   ============================================================ */
+
+.theme-dark {
+  /* Surfaces — dark paper */
+  --background-primary:                 #15110A;
+  --background-secondary:               #1F1A0F;
+  --background-modifier-form-field:     #2A2218;
+  --background-modifier-border:         #3A3022;
+  --background-modifier-border-focus:   rgba(232, 224, 204, 0.35);
+
+  /* Buttons / icons — closer to text so glyphs read clearly */
+  --interactive-normal: #1F1A0F;
+  --interactive-hover:  #2A2218;
+  --icon-color:         #C8BFAA;
+  --icon-color-hover:   #E8E0CC;
+
+  /* Text — primary ink + muted variants */
+  --text-normal: #E8E0CC;
+  --text-muted:  #A89F8A;
+  --text-faint:  #666660;
+
+  /* Hyperlinks — sepia (the analytical / scholarly signal) */
+  --link-color:       #A48055;
+  --link-color-hover: #C09870;
+
+  /* Headings — six MSI register accents (publisher ordering) */
+  --h1-color: #8B5C6B;  /* warm plum    — Hard news */
+  --h2-color: #87905B;  /* olive        — Diagrammatic primary */
+  --h3-color: #D4AC4A;  /* ochre        — Diagrammatic secondary */
+  --h4-color: #C77958;  /* brick        — Editorial cartoon */
+  --h5-color: #A48055;  /* sepia        — Analytical illustration */
+  --h6-color: #C97D55;  /* burnt orange — Cartoonist signature */
+
+  /* Obsidian-style named-color tokens — mapped to MSI register
+     accents so any component using --color-purple / --color-orange
+     etc. picks up the brand palette automatically. Blue/cyan/pink
+     are desaturated approximations (MSI palette has no blue/cyan/pink). */
+  --color-red:        #C77958;  /* brick */
+  --color-red-rgb:    199, 121, 88;
+  --color-orange:     #C97D55;  /* burnt orange */
+  --color-orange-rgb: 201, 125, 85;
+  --color-yellow:     #D4AC4A;  /* ochre */
+  --color-yellow-rgb: 212, 172, 74;
+  --color-green:      #87905B;  /* olive */
+  --color-green-rgb:  135, 144, 91;
+  --color-blue:       #5A5470;  /* desaturated indigo */
+  --color-blue-rgb:   90, 84, 112;
+  --color-cyan:       #6A8A85;  /* desaturated teal */
+  --color-cyan-rgb:   106, 138, 133;
+  --color-purple:     #8B5C6B;  /* warm plum */
+  --color-purple-rgb: 139, 92, 107;
+  --color-pink:       #A8757D;  /* dusky plum-pink */
+  --color-pink-rgb:   168, 117, 125;
+
+  /* Active-state green — richer than the olive --color-green so a
+     selected configuration card (and the PICK chip, and other "this
+     is the active thing" signals) read distinctly against the dark
+     paper without competing with the diagrammatic-primary olive. */
+  --color-active:     #5FA86E;
+  --color-active-rgb: 95, 168, 110;
+
+  /* Warning red — dedicated incomplete / danger signal. Distinct
+     from --color-red (which is brick, an editorial-cartoon accent)
+     and from --color-orange (burnt orange, a cartoonist signature)
+     so warnings don't compete with brand-register tones. */
+  --color-warning:     #E66B5B;
+  --color-warning-rgb: 230, 107, 91;
+}
